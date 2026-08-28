@@ -1,0 +1,3636 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --black: #050505;
+  --white: #ffffff;
+  --gray: #999999;
+  --green: #76c82a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 84px;
+
+  padding: 0 5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 1000;
+
+  transition:
+    height 0.4s ease,
+    background 0.4s ease,
+    backdrop-filter 0.4s ease;
+}
+
+.navbar-scrolled {
+  height: 68px;
+
+  background: rgba(5, 5, 5, 0.88);
+
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid var(--green);
+
+  color: var(--green);
+
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.logo-text {
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar-links a {
+  position: relative;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+
+  color: rgba(255,255,255,0.75);
+
+  transition: color 0.3s ease;
+}
+
+.navbar-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--green);
+
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: white;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.navbar-actions button {
+  border: 0;
+  background: transparent;
+
+  color: white;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.navbar-actions button:hover {
+  color: var(--green);
+  transform: translateY(-2px);
+}
+
+.mobile-menu {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999;
+
+  background: rgba(3,3,3,0.98);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 28px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+}
+
+.mobile-menu-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-menu a {
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: 48px;
+  font-weight: 800;
+
+  letter-spacing: 0.02em;
+}
+
+.mobile-menu a:hover {
+  color: var(--green);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  height: 100svh;
+
+  min-height: 680px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/images/hero.jpg");
+
+  background-size: 75% auto;
+  background-repeat: no-repeat;
+  background-position: 85% center;
+
+  transform: scale(1);
+  animation: heroZoom 12s linear infinite;
+}
+
+@keyframes heroZoom {
+
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1);
+  }
+
+}
+
+.hero-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,0.94) 0%,
+      rgba(0,0,0,0.72) 32%,
+      rgba(0,0,0,0.28) 70%,
+      rgba(0,0,0,0.1) 100%
+    ),
+
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,0.95) 0%,
+      transparent 35%
+    );
+}
+
+.hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(90%, 1400px);
+
+  margin: 0 auto;
+
+  padding-top: 50px;
+}
+
+.hero-eyebrow {
+  margin-bottom: 24px;
+
+  color: var(--green);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.28em;
+}
+
+.hero h1 {
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: clamp(90px, 14vw, 210px);
+
+  font-weight: 900;
+
+  line-height: 0.76;
+
+  letter-spacing: -0.055em;
+
+  text-transform: uppercase;
+}
+
+.hero h1 span {
+  color: var(--green);
+}
+
+.hero-content p {
+  margin-top: 38px;
+
+  color: rgba(255,255,255,0.68);
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 35px;
+}
+
+.hero-button {
+  min-height: 54px;
+
+  padding: 0 27px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,0.3);
+
+  background: rgba(0,0,0,0.2);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-3px);
+
+  background: var(--green);
+
+  border-color: var(--green);
+
+  color: black;
+}
+
+.hero-button-primary {
+  background: var(--green);
+
+  border-color: var(--green);
+
+  color: #050505;
+}
+
+.hero-scroll {
+  position: absolute;
+
+  z-index: 5;
+
+  bottom: 30px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: rgba(255,255,255,0.55);
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.25em;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .navbar-links {
+    display: none;
+  }
+
+  .hero-content {
+    width: 88%;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 650px;
+  }
+
+  .hero-background {
+    background-position: 62% center;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0,0,0,0.92),
+        rgba(0,0,0,0.48)
+      ),
+      linear-gradient(
+        0deg,
+        rgba(0,0,0,0.95),
+        transparent 45%
+      );
+  }
+
+  .hero h1 {
+    font-size: 86px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+
+    width: 240px;
+  }
+
+  .hero-button {
+    width: 100%;
+  }
+
+/* =========================
+   MOTORCYCLE SHOWCASE
+========================= */
+
+.motorcycle-showcase {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding: 150px 0 120px;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(118, 200, 42, 0.10),
+      transparent 35%
+    ),
+    #050505;
+
+  overflow: hidden;
+}
+
+.showcase-container {
+  position: relative;
+
+  width: min(90%, 1400px);
+
+  margin: 0 auto;
+
+  z-index: 2;
+}
+
+
+/* Heading */
+
+.showcase-heading {
+  position: relative;
+
+  z-index: 5;
+
+  max-width: 700px;
+}
+
+.section-label {
+  display: inline-block;
+
+  margin-bottom: 25px;
+
+  color: var(--green);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3em;
+}
+
+.showcase-heading h2 {
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: clamp(70px, 9vw, 130px);
+
+  font-weight: 900;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.045em;
+}
+
+.showcase-heading h2 span {
+  color: var(--green);
+}
+
+.showcase-heading p {
+  max-width: 470px;
+
+  margin-top: 30px;
+
+  color: rgba(255,255,255,0.58);
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* Grid */
+
+.showcase-grid {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.08;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.08) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 20%,
+      black 70%,
+      transparent
+    );
+}
+
+
+/* Glow */
+
+.showcase-glow {
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  left: 50%;
+  top: 45%;
+
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(118,200,42,0.18),
+      rgba(118,200,42,0.04) 35%,
+      transparent 70%
+    );
+
+  filter: blur(15px);
+
+  pointer-events: none;
+}
+
+
+/* Motorcycle */
+
+.motorcycle-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.motorcycle-image-wrapper img {
+  position: relative;
+  z-index: 2;
+
+  width: 70%;
+  max-width: 850px;
+  max-height: 550px;
+
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+
+  filter:
+    drop-shadow(
+      0 35px 45px rgba(0,0,0,0.75)
+    );
+
+  transition:
+    transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.motorcycle-image-wrapper:hover img {
+  transform: scale(1.025);
+}
+
+.bike-light {
+  position: absolute;
+
+  width: 70%;
+  height: 45%;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(118,200,42,0.25),
+      transparent 65%
+    );
+
+  filter: blur(35px);
+
+  z-index: 1;
+}
+
+
+/* Specifications */
+
+.specifications {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  border-top:
+    1px solid rgba(255,255,255,0.12);
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.12);
+}
+
+.spec-item {
+  padding: 35px 30px;
+
+  border-right:
+    1px solid rgba(255,255,255,0.1);
+}
+
+.spec-item:last-child {
+  border-right: 0;
+}
+
+.spec-number {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 7px;
+}
+
+.spec-number span {
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: clamp(52px, 6vw, 82px);
+
+  font-weight: 800;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.04em;
+}
+
+.spec-number small {
+  color: var(--green);
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+.spec-label {
+  margin-top: 13px;
+
+  color: rgba(255,255,255,0.45);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+}
+
+
+/* Bottom content */
+
+.showcase-bottom {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  gap: 50px;
+
+  padding-top: 55px;
+}
+
+.showcase-description {
+  max-width: 520px;
+}
+
+.showcase-description > span {
+  color: var(--green);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.25em;
+}
+
+.showcase-description p {
+  margin-top: 18px;
+
+  color: rgba(255,255,255,0.55);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+.showcase-buttons {
+  display: flex;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+.showcase-button {
+  min-height: 52px;
+
+  padding: 0 25px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid rgba(255,255,255,0.25);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.showcase-button:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--green);
+
+  background: var(--green);
+
+  color: #050505;
+}
+
+.showcase-button.primary {
+  background: var(--green);
+
+  border-color: var(--green);
+
+  color: #050505;
+}
+
+
+/* =========================
+   SHOWCASE RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .motorcycle-showcase {
+    padding: 110px 0 90px;
+  }
+
+  .motorcycle-image-wrapper {
+    margin:
+      20px auto
+      10px;
+  }
+
+  .specifications {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .spec-item:nth-child(2) {
+    border-right: 0;
+  }
+
+  .spec-item:nth-child(-n+2) {
+    border-bottom:
+      1px solid rgba(255,255,255,0.1);
+  }
+
+  .showcase-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .motorcycle-showcase {
+    padding:
+      90px 0
+      70px;
+  }
+
+  .showcase-heading h2 {
+    font-size: 72px;
+  }
+
+  .showcase-heading p {
+    font-size: 13px;
+  }
+
+  .motorcycle-image-wrapper {
+    margin:
+      30px auto
+      20px;
+  }
+
+  .motorcycle-image-wrapper img {
+    max-height: 360px;
+  }
+
+  .spec-item {
+    padding: 25px 18px;
+  }
+
+  .spec-number span {
+    font-size: 48px;
+  }
+
+  .showcase-bottom {
+    gap: 30px;
+  }
+
+  .showcase-buttons {
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+  .showcase-button {
+    width: 100%;
+  }
+
+}
+}
+/* =========================
+   MODEL SELECTOR
+========================= */
+
+.model-selector {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding: 150px 0;
+
+  background: #080808;
+
+  overflow: hidden;
+}
+
+.model-selector-container {
+  position: relative;
+
+  width: min(90%, 1400px);
+
+  margin: 0 auto;
+}
+
+
+/* Heading */
+
+.model-selector-heading {
+  position: relative;
+
+  z-index: 3;
+}
+
+.model-selector-heading h2 {
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: clamp(75px, 10vw, 145px);
+
+  line-height: 0.78;
+
+  font-weight: 900;
+
+  letter-spacing: -0.05em;
+}
+
+.model-selector-heading h2 span {
+  color: var(--green);
+}
+
+
+/* Model tabs */
+
+.model-tabs {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 70px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.12);
+
+  overflow-x: auto;
+
+  scrollbar-width: none;
+}
+
+.model-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.model-tab {
+  position: relative;
+
+  min-width: 150px;
+
+  padding: 20px 18px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: rgba(255,255,255,0.38);
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease;
+}
+
+.model-tab:hover {
+  color: white;
+}
+
+.model-tab.active {
+  color: white;
+
+  background: rgba(255,255,255,0.04);
+}
+
+.model-tab.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -1px;
+
+  height: 3px;
+
+  background: var(--green);
+}
+
+.tab-number {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--green);
+
+  font-size: 8px;
+
+  letter-spacing: 0.2em;
+}
+
+
+/* Main display */
+
+.model-display {
+  position: relative;
+
+  min-height: 650px;
+
+  margin-top: 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.5fr
+    0.7fr;
+
+  align-items: center;
+
+  overflow: hidden;
+}
+
+
+/* Glow */
+
+.model-background-glow {
+  position: absolute;
+
+  width: 800px;
+  height: 600px;
+
+  left: 35%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(118,200,42,0.16),
+      transparent 65%
+    );
+
+  filter: blur(25px);
+
+  pointer-events: none;
+}
+
+
+/* Motorcycle */
+
+.model-image {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  min-height: 550px;
+}
+
+.model-image img {
+  width: 100%;
+
+  max-width: 850px;
+
+  max-height: 570px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 35px 50px rgba(0,0,0,0.8)
+    );
+}
+
+
+/* Information */
+
+.model-info {
+  position: relative;
+
+  z-index: 5;
+
+  padding-left: 30px;
+}
+
+.model-category {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: var(--green);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.25em;
+}
+
+.model-info h3 {
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: clamp(55px, 6vw, 90px);
+
+  line-height: 0.85;
+
+  font-weight: 900;
+
+  letter-spacing: -0.04em;
+}
+
+.model-info p {
+  max-width: 400px;
+
+  margin-top: 25px;
+
+  color: rgba(255,255,255,0.55);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+
+/* Model specifications */
+
+.model-specs {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  margin-top: 35px;
+
+  border-top:
+    1px solid rgba(255,255,255,0.12);
+}
+
+.model-specs div {
+  padding: 20px 15px 20px 0;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.1);
+}
+
+.model-specs div:nth-child(odd) {
+  border-right:
+    1px solid rgba(255,255,255,0.1);
+}
+
+.model-specs strong {
+  display: block;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 29px;
+
+  font-weight: 700;
+}
+
+.model-specs span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: rgba(255,255,255,0.35);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+
+/* Button */
+
+.model-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 50px;
+
+  margin-top: 30px;
+
+  padding: 0 25px;
+
+  background: var(--green);
+
+  color: #050505;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.15em;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.model-button:hover {
+  transform: translateY(-3px);
+
+  background: white;
+}
+
+
+/* =========================
+   MODEL RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+  .model-display {
+    grid-template-columns: 1fr;
+
+    padding-top: 20px;
+  }
+
+  .model-image {
+    min-height: 450px;
+  }
+
+  .model-info {
+    padding-left: 0;
+
+    margin-top: -30px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .model-selector {
+    padding: 100px 0 80px;
+  }
+
+  .model-selector-heading h2 {
+    font-size: 72px;
+  }
+
+  .model-tabs {
+    margin-top: 50px;
+  }
+
+  .model-tab {
+    min-width: 125px;
+
+    padding:
+      16px 13px;
+  }
+
+  .model-display {
+    min-height: auto;
+  }
+
+  .model-image {
+    min-height: 330px;
+  }
+
+  .model-image img {
+    max-height: 330px;
+  }
+
+  .model-info {
+    margin-top: 0;
+  }
+
+  .model-info h3 {
+    font-size: 58px;
+  }
+
+}
+/* =========================
+   TECHNOLOGY SECTION
+========================= */
+
+.technology-section {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding: 150px 0 80px;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(118, 200, 42, 0.06),
+      transparent 40%
+    ),
+    #050505;
+
+  overflow: hidden;
+}
+
+.technology-container {
+  width: min(90%, 1400px);
+
+  margin: 0 auto;
+}
+
+
+/* HEADER */
+
+.technology-header {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 60px;
+}
+
+.technology-header h2 {
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size:
+    clamp(75px, 10vw, 145px);
+
+  line-height: 0.78;
+
+  font-weight: 900;
+
+  letter-spacing: -0.05em;
+}
+
+.technology-header h2 span {
+  color: var(--green);
+}
+
+.technology-header p {
+  max-width: 350px;
+
+  padding-bottom: 8px;
+
+  color: rgba(255,255,255,0.5);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+
+/* STAGE */
+
+.technology-stage {
+  position: relative;
+
+  min-height: 700px;
+
+  margin-top: 70px;
+
+  border-top:
+    1px solid rgba(255,255,255,0.1);
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.1);
+
+  overflow: hidden;
+}
+
+
+/* GRID */
+
+.technology-grid {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.07;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.12) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.12) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+  mask-image:
+    radial-gradient(
+      circle,
+      black 10%,
+      transparent 72%
+    );
+}
+
+
+/* BIKE */
+
+.technology-bike {
+  position: absolute;
+
+  left: 3%;
+
+  top: 50%;
+
+  width: 67%;
+
+  transform:
+    translateY(-50%);
+}
+
+.technology-bike::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 70%;
+  height: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(118,200,42,0.20),
+      transparent 70%
+    );
+
+  filter: blur(35px);
+
+  z-index: -1;
+}
+
+.technology-bike img {
+  width: 100%;
+
+  display: block;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 30px 45px rgba(0,0,0,0.9)
+    );
+}
+
+
+/* HOTSPOTS */
+
+.technology-hotspots {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 10;
+}
+
+.technology-hotspot {
+  position: absolute;
+
+  width: 38px;
+  height: 38px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.hotspot-core {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 25px;
+  height: 25px;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid var(--green);
+
+  background: rgba(5,5,5,0.9);
+
+  color: var(--green);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.technology-hotspot:hover .hotspot-core,
+.technology-hotspot.active .hotspot-core {
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg)
+    scale(1.15);
+
+  background: var(--green);
+
+  color: #050505;
+}
+
+.hotspot-pulse {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 38px;
+  height: 38px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border:
+    1px solid rgba(118,200,42,0.4);
+
+  animation:
+    hotspotPulse 2s infinite;
+}
+
+@keyframes hotspotPulse {
+
+  0% {
+    opacity: 0.8;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.7);
+  }
+
+  70% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.6);
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+.hotspot-number {
+  position: absolute;
+
+  left: 38px;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  color: rgba(255,255,255,0.5);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+
+/* INFORMATION */
+
+.technology-info {
+  position: absolute;
+
+  right: 5%;
+
+  top: 50%;
+
+  width: 330px;
+
+  transform:
+    translateY(-50%);
+
+  z-index: 20;
+
+  padding:
+    30px;
+
+  border-left:
+    2px solid var(--green);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,5,5,0.82),
+      rgba(5,5,5,0.5)
+    );
+
+  backdrop-filter: blur(8px);
+}
+
+.technology-number {
+  display: block;
+
+  color: var(--green);
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 44px;
+
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+.technology-category {
+  display: block;
+
+  margin-top: 10px;
+
+  color: rgba(255,255,255,0.4);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.2em;
+}
+
+.technology-info h3 {
+  margin-top: 14px;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 35px;
+
+  line-height: 0.95;
+
+  font-weight: 800;
+}
+
+.technology-info p {
+  margin-top: 18px;
+
+  color: rgba(255,255,255,0.52);
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+.technology-line {
+  width: 55px;
+
+  height: 2px;
+
+  margin-top: 25px;
+
+  background: var(--green);
+}
+
+.technology-instruction {
+  display: block;
+
+  margin-top: 20px;
+
+  color: rgba(255,255,255,0.25);
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+
+/* FOOTER LINE */
+
+.technology-footer {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding-top: 25px;
+
+  color: rgba(255,255,255,0.25);
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+
+/* =========================
+   TECHNOLOGY RESPONSIVE
+========================= */
+/* =====================================================
+   ZX-10R TECHNOLOGY SECTION
+===================================================== */
+
+.technology-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 150px 0 90px;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(118, 200, 42, 0.08),
+      transparent 42%
+    ),
+    #050505;
+  overflow: hidden;
+}
+
+.technology-container {
+  width: min(90%, 1400px);
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.technology-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 60px;
+}
+
+.technology-header h2 {
+  margin-top: 20px;
+
+  font-family: "Barlow Condensed", sans-serif;
+
+  font-size: clamp(70px, 9vw, 140px);
+
+  line-height: 0.78;
+
+  font-weight: 900;
+
+  letter-spacing: -0.055em;
+}
+
+.technology-header h2 span {
+  color: var(--green);
+}
+
+.technology-header p {
+  max-width: 350px;
+
+  margin-bottom: 8px;
+
+  color: rgba(255, 255, 255, 0.48);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   MAIN TECHNOLOGY STAGE
+===================================================== */
+
+.technology-stage {
+  position: relative;
+
+  height: 720px;
+
+  margin-top: 70px;
+
+  border-top: 1px solid rgba(255,255,255,0.10);
+
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 45% 50%,
+      rgba(118,200,42,0.045),
+      transparent 50%
+    );
+}
+
+
+/* =====================================================
+   TECHNICAL GRID
+===================================================== */
+
+.technology-grid {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.07;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.12) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.12) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 10%,
+      transparent 72%
+    );
+}
+
+
+/* =====================================================
+   MOTORCYCLE
+===================================================== */
+
+.technology-bike {
+  position: absolute;
+
+  left: 0;
+
+  top: 50%;
+
+  width: 67%;
+
+  height: 620px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  z-index: 2;
+}
+
+
+/* Green atmospheric glow */
+
+.technology-bike::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+
+  top: 52%;
+
+  width: 70%;
+
+  height: 55%;
+
+  transform:
+    translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(118,200,42,0.18),
+      transparent 68%
+    );
+
+  filter: blur(45px);
+
+  z-index: -1;
+}
+
+
+/* Actual motorcycle */
+
+.technology-bike img {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  max-width: 900px;
+
+  max-height: 600px;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  filter:
+    drop-shadow(
+      0 35px 45px rgba(0,0,0,0.9)
+    );
+}
+
+
+/* =====================================================
+   HOTSPOTS
+===================================================== */
+
+.technology-hotspots {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+.technology-hotspot {
+  position: absolute;
+
+  width: 42px;
+
+  height: 42px;
+
+  padding: 0;
+
+  transform:
+    translate(-50%, -50%);
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+}
+
+
+/* Main square */
+
+.hotspot-core {
+  position: absolute;
+
+  left: 50%;
+
+  top: 50%;
+
+  width: 27px;
+
+  height: 27px;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid var(--green);
+
+  background:
+    rgba(5,5,5,0.92);
+
+  color: var(--green);
+
+  transition:
+    0.3s ease;
+}
+
+
+/* Active */
+
+.technology-hotspot.active .hotspot-core {
+  background: var(--green);
+
+  color: #050505;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg)
+    scale(1.12);
+}
+
+
+/* Hover */
+
+.technology-hotspot:hover .hotspot-core {
+  background: var(--green);
+
+  color: #050505;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.1);
+}
+
+
+/* Pulse */
+
+.hotspot-pulse {
+  position: absolute;
+
+  left: 50%;
+
+  top: 50%;
+
+  width: 38px;
+
+  height: 38px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border:
+    1px solid rgba(118,200,42,0.5);
+
+  animation:
+    technologyPulse 2s infinite;
+}
+
+@keyframes technologyPulse {
+
+  0% {
+    opacity: 0.8;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.7);
+  }
+
+  70% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.5);
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+
+/* Number */
+
+.hotspot-number {
+  position: absolute;
+
+  left: 35px;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  color: rgba(255,255,255,0.45);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+
+/* =====================================================
+   INFORMATION PANEL
+===================================================== */
+
+.technology-info {
+  position: absolute;
+
+  right: 4%;
+
+  top: 50%;
+
+  width: 340px;
+
+  transform:
+    translateY(-50%);
+
+  z-index: 20;
+
+  padding: 32px;
+
+  border-left:
+    2px solid var(--green);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,5,5,0.88),
+      rgba(5,5,5,0.72)
+    );
+
+  backdrop-filter: blur(12px);
+}
+
+
+/* Number */
+
+.technology-number {
+  display: block;
+
+  color: var(--green);
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 46px;
+
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+
+/* Category */
+
+.technology-category {
+  display: block;
+
+  margin-top: 10px;
+
+  color: rgba(255,255,255,0.38);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.2em;
+}
+
+
+/* Title */
+
+.technology-info h3 {
+  margin-top: 15px;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 38px;
+
+  line-height: 0.9;
+
+  font-weight: 900;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* Description */
+
+.technology-info p {
+  margin-top: 20px;
+
+  color: rgba(255,255,255,0.52);
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+
+/* Green line */
+
+.technology-line {
+  width: 65px;
+
+  height: 2px;
+
+  margin-top: 28px;
+
+  background: var(--green);
+}
+
+
+/* Instruction */
+
+.technology-instruction {
+  display: block;
+
+  margin-top: 18px;
+
+  color: rgba(255,255,255,0.25);
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+
+/* =====================================================
+   BOTTOM LABEL
+===================================================== */
+
+.technology-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-top: 25px;
+
+  color: rgba(255,255,255,0.25);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .technology-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 25px;
+  }
+
+  .technology-stage {
+    height: 850px;
+  }
+
+  .technology-bike {
+    left: 2%;
+
+    top: 38%;
+
+    width: 96%;
+
+    height: 500px;
+  }
+
+  .technology-info {
+    right: 5%;
+
+    left: 5%;
+
+    top: auto;
+
+    bottom: 25px;
+
+    width: auto;
+
+    transform: none;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .technology-section {
+    padding:
+      100px 0
+      60px;
+  }
+
+  .technology-header h2 {
+    font-size: 70px;
+  }
+
+  .technology-header p {
+    font-size: 12px;
+  }
+
+  .technology-stage {
+    height: 760px;
+
+    margin-top: 50px;
+  }
+
+  .technology-bike {
+    left: -12%;
+
+    top: 30%;
+
+    width: 124%;
+
+    height: 400px;
+  }
+
+  .technology-bike img {
+    max-height: 390px;
+  }
+
+  .technology-hotspot {
+    width: 34px;
+
+    height: 34px;
+  }
+
+  .hotspot-core {
+    width: 23px;
+
+    height: 23px;
+  }
+
+  .hotspot-number {
+    display: none;
+  }
+
+  .technology-info {
+    right: 15px;
+
+    left: 15px;
+
+    bottom: 15px;
+
+    padding: 22px;
+  }
+
+  .technology-number {
+    font-size: 38px;
+  }
+
+  .technology-info h3 {
+    font-size: 30px;
+  }
+
+  .technology-info p {
+    font-size: 11px;
+  }
+
+  .technology-footer {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    line-height: 1.5;
+  }
+
+}
+
+
+
+/* =====================================================
+   ZX-10R TECHNOLOGY - FINAL LAYOUT FIX
+===================================================== */
+
+.technology-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 0 70px;
+  overflow: hidden;
+  background: #050505;
+}
+
+.technology-container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* TECHNOLOGY STAGE */
+
+.technology-stage {
+  position: relative;
+  width: 100%;
+  height: 720px;
+  margin-top: 60px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 42% 50%,
+      rgba(118, 200, 42, 0.10),
+      transparent 45%
+    ),
+    #050505;
+
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* GRID */
+
+.technology-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.15) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.15) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+}
+
+/* MOTORCYCLE AREA */
+
+.technology-bike {
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 68%;
+  height: 620px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2;
+}
+
+/* GREEN LIGHT BEHIND BIKE */
+
+.technology-bike::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 70%;
+  height: 55%;
+
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(118,200,42,0.20),
+      transparent 68%
+    );
+
+  filter: blur(50px);
+
+  z-index: -1;
+}
+
+/* BIKE IMAGE */
+
+.technology-bike img {
+  width: 100%;
+  height: 100%;
+
+  max-width: 900px;
+  max-height: 600px;
+
+  object-fit: contain;
+  object-position: center;
+
+  display: block;
+
+  filter:
+    drop-shadow(
+      0 35px 45px rgba(0,0,0,0.9)
+    );
+}
+
+/* HOTSPOTS */
+
+.technology-hotspots {
+  position: absolute;
+  inset: 0;
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+.technology-hotspot {
+  position: absolute;
+
+  width: 42px;
+  height: 42px;
+
+  transform: translate(-50%, -50%);
+
+  pointer-events: auto;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+
+/* HOTSPOT CENTER */
+
+.hotspot-core {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 27px;
+  height: 27px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #76c82a;
+
+  background: rgba(0,0,0,0.9);
+
+  color: #76c82a;
+
+  transition: all 0.3s ease;
+}
+
+/* HOTSPOT HOVER */
+
+.technology-hotspot:hover .hotspot-core {
+  background: #76c82a;
+  color: #000;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.15);
+}
+
+/* ACTIVE HOTSPOT */
+
+.technology-hotspot.active .hotspot-core {
+  background: #76c82a;
+  color: #000;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg)
+    scale(1.1);
+}
+
+/* HOTSPOT PULSE */
+
+.hotspot-pulse {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 40px;
+  height: 40px;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgba(118,200,42,0.5);
+
+  animation: zxPulse 2s infinite;
+}
+
+@keyframes zxPulse {
+
+  0% {
+    opacity: 0.8;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.7);
+  }
+
+  70% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.5);
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+/* HOTSPOT NUMBER */
+
+.hotspot-number {
+  position: absolute;
+
+  left: 36px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: rgba(255,255,255,0.45);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+}
+
+/* INFORMATION PANEL */
+
+.technology-info {
+  position: absolute;
+
+  right: 4%;
+  top: 50%;
+
+  width: 350px;
+
+  transform: translateY(-50%);
+
+  padding: 35px;
+
+  z-index: 30;
+
+  border-left: 2px solid #76c82a;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,5,5,0.92),
+      rgba(5,5,5,0.75)
+    );
+
+  backdrop-filter: blur(14px);
+}
+
+/* NUMBER */
+
+.technology-number {
+  display: block;
+
+  color: #76c82a;
+
+  font-size: 50px;
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+/* CATEGORY */
+
+.technology-category {
+  display: block;
+
+  margin-top: 10px;
+
+  color: rgba(255,255,255,0.4);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.2em;
+}
+
+/* TITLE */
+
+.technology-info h3 {
+  margin-top: 15px;
+
+  color: white;
+
+  font-size: 38px;
+  line-height: 0.9;
+
+  font-weight: 900;
+
+  letter-spacing: -0.02em;
+}
+
+/* DESCRIPTION */
+
+.technology-info p {
+  margin-top: 20px;
+
+  color: rgba(255,255,255,0.55);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+/* GREEN LINE */
+
+.technology-line {
+  width: 65px;
+  height: 2px;
+
+  margin-top: 28px;
+
+  background: #76c82a;
+}
+
+/* INSTRUCTION */
+
+.technology-instruction {
+  display: block;
+
+  margin-top: 18px;
+
+  color: rgba(255,255,255,0.3);
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+/* BOTTOM LABEL */
+
+.technology-footer {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 22px;
+
+  color: rgba(255,255,255,0.25);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .technology-stage {
+    height: 850px;
+  }
+
+  .technology-bike {
+    width: 100%;
+    height: 500px;
+
+    top: 38%;
+  }
+
+  .technology-info {
+    left: 5%;
+    right: 5%;
+
+    bottom: 25px;
+    top: auto;
+
+    width: auto;
+
+    transform: none;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .technology-section {
+    padding: 90px 0 50px;
+  }
+
+  .technology-container {
+    width: 92%;
+  }
+
+  .technology-stage {
+    height: 760px;
+
+    margin-top: 40px;
+  }
+
+  .technology-bike {
+    width: 120%;
+    height: 400px;
+
+    left: -10%;
+    top: 30%;
+  }
+
+  .technology-bike img {
+    max-height: 390px;
+  }
+
+  .technology-info {
+    left: 15px;
+    right: 15px;
+
+    bottom: 15px;
+
+    padding: 22px;
+  }
+
+  .technology-number {
+    font-size: 38px;
+  }
+
+  .technology-info h3 {
+    font-size: 30px;
+  }
+
+  .technology-info p {
+    font-size: 11px;
+  }
+
+  .hotspot-number {
+    display: none;
+  }
+
+  .technology-footer {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+
+}
+
+/* =====================================================
+   ZX-10R TECHNOLOGY - IMAGE POSITION FIX
+===================================================== */
+
+.technology-bike {
+  position: absolute !important;
+
+  left: 0 !important;
+  top: 0 !important;
+
+  width: 68% !important;
+  height: 100% !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  transform: none !important;
+
+  overflow: visible !important;
+
+  z-index: 5 !important;
+}
+
+.technology-bike img {
+  width: 115% !important;
+  height: 115% !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  object-fit: contain !important;
+
+  transform: translateY(-105px) scale(1.12) !important;
+
+  display: block !important;
+
+  filter: drop-shadow(
+    0 30px 40px rgba(0, 0, 0, 0.9)
+  ) !important;
+}
+
+
+/* Keep hotspots above the motorcycle */
+
+.technology-hotspots {
+  z-index: 20 !important;
+}
+
+
+/* Keep information panel above everything */
+
+.technology-info {
+  z-index: 30 !important;
+}
+
+
+/* =====================================================
+   DESKTOP HOTSPOT POSITIONS
+===================================================== */
+
+@media (min-width: 1001px) {
+
+  .technology-hotspot:nth-child(1) {
+    left: 47% !important;
+    top: 62% !important;
+  }
+
+  .technology-hotspot:nth-child(2) {
+    left: 57% !important;
+    top: 43% !important;
+  }
+
+  .technology-hotspot:nth-child(3) {
+    left: 57% !important;
+    top: 67% !important;
+  }
+
+  .technology-hotspot:nth-child(4) {
+    left: 62% !important;
+    top: 55% !important;
+  }
+
+  .technology-hotspot:nth-child(5) {
+    left: 40% !important;
+    top: 46% !important;
+  }
+
+  .technology-hotspot:nth-child(6) {
+    left: 25% !important;
+    top: 68% !important;
+  }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .technology-bike {
+    width: 100% !important;
+  }
+
+  .technology-bike img {
+    width: 110% !important;
+
+    transform:
+      translateY(-70px)
+      scale(1.08) !important;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .technology-bike {
+    width: 120% !important;
+
+    left: -10% !important;
+  }
+
+  .technology-bike img {
+    width: 115% !important;
+
+    transform:
+      translateY(-45px)
+      scale(1.05) !important;
+  }
+
+}
+
+/* =====================================================
+   ZX-10R HOTSPOTS - FINAL POSITIONING
+===================================================== */
+
+@media (min-width: 1001px) {
+
+  /* 01 — ENGINE
+     Place near the center/lower engine area */
+  .technology-hotspot:nth-child(1) {
+    left: 46% !important;
+    top: 63% !important;
+  }
+
+  /* 02 — ELECTRONICS
+     Place near cockpit / upper front */
+  .technology-hotspot:nth-child(2) {
+    left: 57% !important;
+    top: 40% !important;
+  }
+
+  /* 03 — SUSPENSION
+     Place around front fork */
+  .technology-hotspot:nth-child(3) {
+    left: 61% !important;
+    top: 65% !important;
+  }
+
+  /* 04 — BRAKES
+     Place near front brake / wheel */
+  .technology-hotspot:nth-child(4) {
+    left: 65% !important;
+    top: 56% !important;
+  }
+
+  /* 05 — FRAME
+     Place around upper frame / tank */
+  .technology-hotspot:nth-child(5) {
+    left: 43% !important;
+    top: 47% !important;
+  }
+
+  /* 06 — EXHAUST
+     Place around rear/exhaust */
+  .technology-hotspot:nth-child(6) {
+    left: 27% !important;
+    top: 67% !important;
+  }
+}
+
+
+/* =========================================
+   GALLERY SECTION
+========================================= */
+
+.gallery-section {
+  position: relative;
+  background: #050505;
+  padding: 140px 7% 60px;
+  overflow: hidden;
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 50px;
+  margin-bottom: 70px;
+}
+
+.gallery-header h2 {
+  margin-top: 20px;
+  font-size: clamp(70px, 9vw, 150px);
+  line-height: 0.85;
+  font-weight: 900;
+  letter-spacing: -5px;
+  color: #fff;
+}
+
+.gallery-header h2 span {
+  color: #76d21f;
+}
+
+.gallery-header p {
+  max-width: 420px;
+  color: #888;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* GRID */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+
+/* IMAGE ITEMS */
+
+.gallery-item {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  background: #111;
+  cursor: pointer;
+}
+
+.gallery-large {
+  grid-column: 1 / -1;
+  height: 700px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition:
+    transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+
+/* IMAGE GRADIENT */
+
+.gallery-item::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 35%,
+      rgba(0, 0, 0, 0.9) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* TEXT */
+
+.gallery-overlay {
+  position: absolute;
+  z-index: 2;
+
+  left: 35px;
+  right: 35px;
+  bottom: 35px;
+}
+
+.gallery-overlay span {
+  display: block;
+
+  color: #76d21f;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+
+  margin-bottom: 15px;
+}
+
+.gallery-overlay h3 {
+  margin: 0;
+
+  color: #fff;
+
+  font-size: clamp(32px, 4vw, 60px);
+
+  line-height: 0.9;
+
+  font-weight: 900;
+
+  letter-spacing: -2px;
+}
+
+.gallery-overlay p {
+  margin-top: 18px;
+
+  color: #aaa;
+
+  font-size: 14px;
+}
+
+
+/* FOOTER */
+
+.gallery-footer {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 40px;
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(255,255,255,0.15);
+
+  color: #555;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .gallery-section {
+    padding: 100px 20px 40px;
+  }
+
+  .gallery-header {
+    display: block;
+    margin-bottom: 45px;
+  }
+
+  .gallery-header h2 {
+    font-size: 70px;
+    letter-spacing: -3px;
+  }
+
+  .gallery-header p {
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  .gallery-grid {
+    display: block;
+  }
+
+  .gallery-item,
+  .gallery-large {
+    height: 420px;
+    margin-bottom: 4px;
+  }
+
+  .gallery-overlay {
+    left: 22px;
+    right: 22px;
+    bottom: 25px;
+  }
+
+  .gallery-overlay h3 {
+    font-size: 38px;
+  }
+
+  .gallery-footer span:last-child {
+    display: none;
+  }
+}
+
+
+/* =========================================
+   RACING SECTION
+========================================= */
+
+.racing-section {
+  position: relative;
+  width: 100%;
+  min-height: 850px;
+  background: #050505;
+  padding: 140px 5vw;
+  overflow: hidden;
+}
+
+.racing-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 70px;
+
+  align-items: center;
+}
+
+
+/* CONTENT */
+
+.racing-content {
+  position: relative;
+  z-index: 2;
+}
+
+.racing-content .section-label {
+  display: block;
+
+  color: #76d600;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 5px;
+
+  margin-bottom: 25px;
+}
+
+.racing-content h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(70px, 8vw, 130px);
+
+  line-height: 0.85;
+
+  font-weight: 900;
+
+  letter-spacing: -5px;
+}
+
+.racing-content h2 span {
+  color: #76d600;
+}
+
+.racing-content p {
+  max-width: 500px;
+
+  margin-top: 45px;
+
+  color: #999999;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+}
+
+
+/* STATS */
+
+.racing-stats {
+  display: flex;
+
+  margin-top: 50px;
+
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+}
+
+.racing-stats div {
+  flex: 1;
+
+  padding: 25px 20px;
+
+  border-right: 1px solid #292929;
+}
+
+.racing-stats div:last-child {
+  border-right: none;
+}
+
+.racing-stats strong {
+  display: block;
+
+  color: #ffffff;
+
+  font-size: 32px;
+
+  font-weight: 800;
+}
+
+.racing-stats span {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #666666;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+}
+
+
+/* BUTTON */
+
+.racing-button {
+  margin-top: 45px;
+
+  padding: 18px 35px;
+
+  border: none;
+
+  background: #76d600;
+
+  color: #000000;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.racing-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 30px rgba(118, 214, 0, 0.25);
+}
+
+
+/* IMAGE */
+
+.racing-image {
+  position: relative;
+
+  width: 100%;
+
+  height: 650px;
+
+  overflow: hidden;
+
+  background: #000000;
+}
+
+.racing-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  filter: brightness(0.85);
+
+  transition: transform 0.8s ease;
+}
+
+.racing-image:hover img {
+  transform: scale(1.04);
+}
+
+
+/* IMAGE OVERLAY */
+
+.racing-overlay {
+  position: absolute;
+
+  left: 30px;
+  right: 30px;
+  bottom: 25px;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+}
+
+.racing-overlay span:first-child {
+  color: #76d600;
+
+  font-size: 18px;
+}
+
+
+/* GREEN GLOW */
+
+.racing-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  left: -250px;
+  top: 100px;
+
+  background: rgba(118, 214, 0, 0.08);
+
+  filter: blur(120px);
+
+  pointer-events: none;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  .racing-section {
+    padding: 100px 25px;
+  }
+
+  .racing-container {
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+  }
+
+  .racing-content h2 {
+    font-size: 80px;
+  }
+
+  .racing-image {
+    height: 500px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .racing-content h2 {
+    font-size: 60px;
+    letter-spacing: -3px;
+  }
+
+  .racing-content p {
+    font-size: 15px;
+  }
+
+  .racing-stats strong {
+    font-size: 24px;
+  }
+
+  .racing-stats div {
+    padding: 20px 10px;
+  }
+
+  .racing-image {
+    height: 400px;
+  }
+
+}
